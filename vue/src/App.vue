@@ -3,8 +3,7 @@
         <div id="nav">
             <!-- <img alt="Vue logo" src="../assets/logo.png">-->
             <van-swipe :autoplay="3000" indicator-color="white" >
-                <van-swipe-item><van-image src="https://img.yzcdn.cn/vant/cat.jpeg"/></van-swipe-item>
-                <van-swipe-item><van-image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1572227426&di=842c28499be563964b0a834d0690db35&imgtype=jpg&er=1&src=http%3A%2F%2Fpic16.nipic.com%2F20110927%2F7958738_115703685192_2.jpg"/></van-swipe-item>
+                <van-swipe-item v-for="ad in adList"><van-image :src="ad.url"/></van-swipe-item>
             </van-swipe>
 
         </div>
@@ -23,6 +22,7 @@
 <script>
     import Index from '@/components/Index.vue'
     import Footer from '@/components/Footer.vue'
+    import Axios from 'axios'
 
     // @ is an alias to /src
     export default {
@@ -31,10 +31,21 @@
         },
         data() {
             return {
-                images: [
-                    'https://img.yzcdn.cn/vant/apple-1.jpg',
-                    'https://img.yzcdn.cn/vant/apple-2.jpg'
+                adList: [
+                    {url: 'http://fs.zhenjiang365.cn/bbsimg/fcmb/image/nopic590.jpg'}
                 ]
+            }
+        },
+        created:function () {
+
+            this.init();
+        },
+        methods:{
+            init(){
+                var _this =this;
+                Axios.get('/api/cms/adList').then(function (res) {
+                    _this.adList=res.data.data;
+                });
             }
         }
     }

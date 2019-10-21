@@ -1,12 +1,29 @@
 <template>
     <div class="footer">
-        <van-divider :style="{ color: '#1989fa', borderColor: '#6C8592', padding: '0 16px' }">©2019&nbsp;XXXXX.cn&nbsp;</van-divider>
+        <van-divider :style="{ color: '#1989fa', borderColor: '#6C8592', padding: '0 16px' }">{{copyright}}</van-divider>
     </div>
 </template>
 
 <script>
+    import Axios from 'axios'
     export default {
-        name: "Footer"
+        name: "Footer",
+        data(){
+            return {
+                copyright:'xxxx'
+            }
+        },
+        created:function (){
+           this.init();
+        },
+        methods:{
+            init(){
+                var _this=this;
+                Axios.get('/api/cms/globalSetting').then(function(res){
+                    _this.copyright =res.data.data.copyright
+                })
+            }
+        }
     }
 </script>
 

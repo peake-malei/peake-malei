@@ -9,8 +9,8 @@
     >
         <van-cell
                 v-for="item in list"
-                :key="item"
-                :title="item"
+                :key="item.id"
+                :title="item.title"
         />
     </van-list>
 
@@ -33,32 +33,23 @@
         props:{
             type:String
         },
-
         methods: {
             onLoad() {
-
-                Axios.get('/user/ArticleList')
+                var _this=this;
+                Axios.get('/api/cms/articleList')
                     .then(function(res){
+                        _this.list=res.data.data
                        console.log(res.data);
                     })
                     .catch(function(err){
                         alert(err);
                     });
 
-
-                // 异步更新数据
-                setTimeout(() => {
-                    for (let i = 0; i < 10; i++) {
-                    this.list.push(this.list.length + 1);
-                }
                 // 加载状态结束
                 this.loading = false;
-
                 // 数据全部加载完成
-                if (this.list.length >= 20) {
-                    this.finished = true;
-                }
-            }, 500);
+                this.finished = true;
+
             }
         }
     }
