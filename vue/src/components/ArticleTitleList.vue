@@ -19,6 +19,7 @@
 </template>
 
 <script>
+    import Axios from 'axios'
     export default {
         name: "ArticleTitleList",
         data() {
@@ -35,6 +36,16 @@
 
         methods: {
             onLoad() {
+
+                Axios.get('/user/ArticleList')
+                    .then(function(res){
+                       console.log(res.data);
+                    })
+                    .catch(function(err){
+                        alert(err);
+                    });
+
+
                 // 异步更新数据
                 setTimeout(() => {
                     for (let i = 0; i < 10; i++) {
