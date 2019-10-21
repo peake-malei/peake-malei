@@ -9,10 +9,12 @@
 
         </div>
 
-        <div style="background-color: rgba(21,193,33,0.64);height: 80%">
+        <div style="height: 65%; ">
             <Index :msg="首页"/>
+            <div style="height: 28px"></div>
         </div>
 
+       <Footer/>
 
     </div>
 
@@ -20,11 +22,12 @@
 
 <script>
     import Index from '@/components/Index.vue'
+    import Footer from '@/components/Footer.vue'
 
     // @ is an alias to /src
     export default {
         components:{
-            Index,
+            Index,Footer
         },
         data() {
             return {
@@ -48,9 +51,9 @@
         /*color: #2c3e50;*/
         width:100%;
         height: 100%;
-        overflow:hidden;
+        /*overflow:hidden;*/
         position: absolute;
-        background-color: #ee0a24;
+        /*background-color: #ee0a24;*/
     }
     #nav{
         overflow:hidden;
@@ -59,6 +62,8 @@
     }
 
     html{
-        background-color: rgba(42, 117, 255, 0.15);
+        /*background-color: rgba(42, 117, 255, 0.15);*/
     }
+
+
 </style>
