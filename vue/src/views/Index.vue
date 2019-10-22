@@ -8,11 +8,13 @@
       </van-swipe>
     </div>
     <van-notice-bar text="不积跬步，无以至千里；不积小流，无以成江海" left-icon="volume-o" />
-    <van-tabs v-model="active" sticky title-active-color="#42b983" color="#42b983">
-      <van-tab title="标签 1" >
+    <van-tabs v-model="active" sticky title-active-color="#42b983" color="#42b983" @click="faceIndex">
+      <van-tab title="基础功能" >
         <ArticleTitleList :type="123" />
       </van-tab>
-      <van-tab title="标签 2">内容 2</van-tab>
+      <van-tab title="人脸识别" >
+
+      </van-tab>
       <van-tab title="标签 3">内容 3</van-tab>
 
     </van-tabs>
@@ -29,6 +31,7 @@
     import Footer from '@/components/Footer.vue'
     import Axios from 'axios'
     import ArticleTitleList from '@/views/ArticleTitleList.vue'
+    import FaceRecognition from '@/views/FaceRecognition.vue'
 export default {
   name: 'Index',
     components:{
@@ -55,6 +58,11 @@ export default {
             Axios.get('/api/cms/adList').then(function (res) {
                 _this.adList=res.data.data;
             });
+        },faceIndex(name, title){
+            if(name==1){
+                this.$router.push('/face/index')
+            }
+
         }
     }
 }

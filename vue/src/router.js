@@ -24,6 +24,10 @@ export default new Router({
       path:'/cms/articleDetail',
       name:'',
       component:() =>import('./views/ArticleDetail.vue')
+    },{
+      path:'/face/index',
+      name:'',
+      component:() =>import('./views/FaceRecognition.vue')
     }
   ]
 })

@@ -1,7 +1,8 @@
 <template>
+
     <div>
         <van-nav-bar
-                :title="title"
+                title="人脸识别"
                 fixed="true"
                 left-text="返回"
                 right-text="分享链接"
@@ -11,38 +12,26 @@
         />
 
 
-           <div v-if="content!=''" v-html="content" style="padding-top: 15%;padding-left: 10px;padding-right: 10px">
-           </div>
-
-
-           <View404 v-if="content==''"/>
-
-
     </div>
 </template>
 
 <script>
     import { Dialog } from 'vant';
-    import View404 from '@/views/404.vue'
-    import Axios from 'axios'
     export default {
-        name: "ArticleDetail",
+        name: "FaceRecognition",
         components:{
-            View404,Dialog
+            Dialog
         },
-        data(){
+        data () {
             return {
-                title:'详情',
-                content:false,
+                videoEle: null
             }
-        },created:function () {
-            this.init()
-        }
-        ,methods: {
+        },
+        methods:{
             onClickLeft() {
                 this.$router.back()
-            },
-            onClickRight() {
+            }
+            , onClickRight() {
 
                 var href=window.location.href;
                 this.$copyText( href).then(function (e) {
@@ -58,17 +47,9 @@
                     console.log(e)
                 })
 
-            },
-            init(){
-                var _this=this
-                this.title=this.$route.query.title;
-                Axios.get('/html/article/'+this.$route.query.id+'.html').then(function (res) {
-                    _this.content=res.data
-                });
-
-                // this.url='/html/article/'+this.$route.query.id+'.html';
             }
         }
+
     }
 </script>
 
