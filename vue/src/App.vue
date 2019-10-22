@@ -18,11 +18,10 @@
             }
         },
         created:function () {
-
+            this.init()
         },
         methods:{
             init(){
-
             }
         }
     }

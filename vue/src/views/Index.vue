@@ -1,13 +1,13 @@
 <template>
   <div>
+
     <div id="nav">
       <!-- <img alt="Vue logo" src="../assets/logo.png">-->
       <van-swipe :autoplay="3000" indicator-color="white" >
         <van-swipe-item v-for="ad in adList"><van-image :src="ad.url"/></van-swipe-item>
       </van-swipe>
-
     </div>
-
+    <van-notice-bar text="不积跬步，无以至千里；不积小流，无以成江海" left-icon="volume-o" />
     <van-tabs v-model="active" sticky title-active-color="#42b983" color="#42b983">
       <van-tab title="标签 1" >
         <ArticleTitleList :type="123" />

@@ -53,7 +53,7 @@
 
             },
             detail:function (item) {
-                this.$router.push('/cms/articleDetail')
+                this.$router.push({path:'/cms/articleDetail',query:{id:item.id,title:item.title}})
 
             }
         }

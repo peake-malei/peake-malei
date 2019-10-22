@@ -4,9 +4,11 @@ import router from './router'
 import Vant from 'vant';
 import 'vant/lib/index.css';
 
+import VueClipboard from 'vue-clipboard2'
+Vue.use(VueClipboard)
+
 // 引入mockjs
 require('./mock'); //引入mock数据，关闭则注释该行
-
 Vue.use(Vant);
 Vue.config.productionTip = false
 
