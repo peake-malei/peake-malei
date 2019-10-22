@@ -11,6 +11,7 @@
                 v-for="item in list"
                 :key="item.id"
                 :title="item.title"
+                v-on:click="detail(item)"
         />
     </van-list>
 
@@ -49,6 +50,10 @@
                 this.loading = false;
                 // 数据全部加载完成
                 this.finished = true;
+
+            },
+            detail:function (item) {
+                this.$router.push('/cms/articleDetail')
 
             }
         }
